@@ -3,8 +3,8 @@ VERS.                      2.0: CWLS Log ASCII Standard - VERSION 2.0
 WRAP.                       NO: One line per depth step
 #Non standard LAS - data should be wrapped
 ~Well Information Block
-STRT.FT               -4.8000: START DEPTH
-STOP.FT             8653.4000: STOP DEPTH
+STRT.FT           2616.4238: START DEPTH
+STOP.FT           15.0167: STOP DEPTH
 STEP.FT                0.1000: STEP
 NULL.                -999.2500: NULL VALUE
 COMP.                         : COMPANY

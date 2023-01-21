@@ -49,7 +49,18 @@ export class LasFileReader {
     let editHeader = header.replace(/TIME\.SEC/g, 'DEPT.FT');
     editHeader = editHeader.replace(/SEC/g, 'FT');
     editHeader = editHeader.replace('Elapsed Time', 'Depth');
+    editHeader = editHeader
+      .replace(
+        /STRT\.FT\s+(-\d+(\.\d+)?):/,
+        `STRT.FT           ${this.data[0][0].toString()}:`
+      )
+      .replace(
+        /STOP\.FT\s+(\d+(\.\d+)?):/,
+        `STOP.FT           ${this.data[this.data.length - 1][0].toString()}:`
+      );
+
     this.lasHeader = editHeader;
+    console.log(this.lasHeader);
   }
 
   timeToDepth(): void {
@@ -99,7 +110,6 @@ export class LasFileReader {
         sameDepth.push(row);
       }
     });
-
     this.data = averages;
   }
 
@@ -130,11 +140,9 @@ export class LasFileReader {
 
     // add column headers
 
-    const outputData = averagesToString.map((row) => row.join('')).join('\n');
-    const final = this.lasHeader + outputData;
+    const stringData = averagesToString.map((row) => row.join('')).join('\n');
+    const final = this.lasHeader + stringData;
 
     fs.writeFileSync('report.LAS', final);
   }
-
-  // depthShift(offsetWLD58, offsetWLD62, offsetWAF1, offsetWAF2): void {}
 }
