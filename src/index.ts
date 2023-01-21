@@ -6,4 +6,4 @@ import { TimeToDepth } from './TimeToDepth';
 // );
 // timeToDepth.convertTimeToDepth();
 const myLas = new LasFileReader('sulphur_mines_shut_in_depth_final.LAS');
-myLas.readLasjs();
+myLas.read();

@@ -19,11 +19,12 @@ export class TimeToDepth {
   constructor(public reader: DataReader) {}
 
   convertTimeToDepth(): void {
-    this.reader.read();
     const depthIndex = this.reader.columnHeader.indexOf('ADPTH');
     const lspdIndex = this.reader.columnHeader.indexOf('LSPD');
 
+    this.reader.read();
     let curveData = this.reader.data;
+
     // trim data from non-zero speed (moving data), leaving only stations
 
     curveData = curveData
@@ -65,7 +66,6 @@ export class TimeToDepth {
     });
 
     // convert averages to string
-    console.log(averages.length);
 
     averages = averages.map((row) => row.map((item) => item.toFixed(4)));
     this.outputData = averages.map((row) => row.join('     ')).join('\n');

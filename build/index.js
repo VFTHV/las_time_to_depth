@@ -6,4 +6,4 @@ const LasFileReader_1 = require("./LasFileReader");
 // );
 // timeToDepth.convertTimeToDepth();
 const myLas = new LasFileReader_1.LasFileReader('sulphur_mines_shut_in_depth_final.LAS');
-myLas.readLasjs();
+myLas.read();
